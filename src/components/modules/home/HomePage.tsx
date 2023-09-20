@@ -1,5 +1,3 @@
-import { Header } from "../../layout/Header";
-
 export const HomePage = () => {
-  return <Header />;
+  return <p>Home Page</p>;
 };

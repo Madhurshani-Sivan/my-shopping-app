@@ -1,6 +1,5 @@
 import {
   CheckOutlined,
-  SearchOutlined,
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
