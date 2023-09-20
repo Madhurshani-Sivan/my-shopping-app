@@ -1,9 +1,9 @@
-import "./App.css";
+import { HomePage } from "./components/modules/home/HomePage";
 
 function App() {
   return (
     <>
-      <h1>My Shopping App</h1>
+      <HomePage />
     </>
   );
 }
