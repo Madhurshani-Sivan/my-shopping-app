@@ -6,8 +6,10 @@ import {
 import styles from "./Header.module.css";
 import logo from "./assets/logo.png";
 import { Button, Input, Select } from "antd";
+import { FC } from "react";
+import { Option } from "antd/es/mentions";
 
-export const Header = () => {
+const Header: FC = () => {
   return (
     <header>
       <div className={styles.notice}>
@@ -19,14 +21,10 @@ export const Header = () => {
           <img src={logo} alt="logo" />
           <p>Comforty</p>
         </div>
-        <Select
-          defaultValue="all"
-          options={[
-            { value: "all", label: "All Categories" },
-            { value: "1", label: "Option 1" },
-            { value: "2", label: "Option 2" },
-          ]}
-        />
+        <Select<string> defaultValue="all">
+          <Option value="all"> All Categories</Option>,
+          <Option value="1"> 1</Option>,<Option value="2"> 2</Option>,
+        </Select>
         <Input placeholder="Search here" />
         <Button className={styles.searchButton}>Search</Button>
         <Button className={styles.cartButton}>
@@ -41,3 +39,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

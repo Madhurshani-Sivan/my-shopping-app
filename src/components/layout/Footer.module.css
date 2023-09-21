@@ -6,9 +6,6 @@
   border: 2px solid lightgray;
 }
 
-.footerLeft {
-}
-
 .logo {
   display: flex;
   flex-direction: row;

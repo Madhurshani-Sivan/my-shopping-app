@@ -7,8 +7,9 @@ import {
 import styles from "./Footer.module.css";
 import logo from "./assets/logo.png";
 import { Button, Input } from "antd";
+import { FC } from "react";
 
-export const Footer = () => {
+const Footer: FC = () => {
   return (
     <footer>
       <div className={styles.footerContent}>
@@ -49,3 +50,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;
