@@ -1,9 +1,10 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../../store/slices/productReducer";
-import { Spin } from "antd";
+import { Card, Col, Row, Spin } from "antd";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../../../store/RootState";
+import ProductCard from "./ProductCard";
 
 const ProductList: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
@@ -24,11 +25,13 @@ const ProductList: FC = () => {
   }
 
   return (
-    <div>
+    <Row gutter={[16, 16]}>
       {data.map((product) => (
-        <div key={product.id}>{product.title}</div>
+        <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
+          <ProductCard product={product} />
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };
 
