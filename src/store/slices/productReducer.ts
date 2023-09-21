@@ -1,10 +1,13 @@
 import { Action, ThunkAction, createSlice } from "@reduxjs/toolkit";
 import { listProducts } from "../actions/productsApi";
 import { RootState } from "../RootState";
+import { ProductState } from "../../types/products";
+
+const initialState: ProductState = { data: [], isLoading: false, error: null };
 
 const productsSlice = createSlice({
   name: "products",
-  initialState: { data: [], isLoading: false, error: null },
+  initialState: initialState,
   reducers: {
     fetchProductsStart: (state) => {
       state.isLoading = true;

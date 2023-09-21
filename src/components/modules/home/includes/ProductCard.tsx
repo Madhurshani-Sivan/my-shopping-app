@@ -1,14 +1,11 @@
-import {
-  HeartFilled,
-  ShoppingCartOutlined,
-  ShoppingTwoTone,
-} from "@ant-design/icons";
+import { ShoppingTwoTone } from "@ant-design/icons";
 import { Card } from "antd";
 import { FC } from "react";
 import styles from "./ProductCard.module.css";
 import Meta from "antd/es/card/Meta";
+import { ProductCardProps } from "../../../../types/products";
 
-const ProductCard: FC = ({ product }) => {
+const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const inStock = product.stock > 0;
   const price = "$" + product.price;
 
@@ -19,7 +16,7 @@ const ProductCard: FC = ({ product }) => {
       cover={
         <img
           alt={product.title}
-          src={product.images[0]}
+          src={product.thumbnail}
           className={styles.image}
         />
       }
