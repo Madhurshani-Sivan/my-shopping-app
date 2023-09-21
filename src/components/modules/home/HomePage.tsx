@@ -1,7 +1,8 @@
 import { FC } from "react";
+import ProductList from "./includes/ProductsList";
 
 const HomePage: FC = () => {
-  return <p>Home Page</p>;
+  return <ProductList />;
 };
 
 export default HomePage;
