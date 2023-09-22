@@ -11,7 +11,6 @@ export const listProducts = async (page: number, limit: number) => {
     const response = await api.get(
       `${PRODUCTS_ENDPOINT}?limit=${limit}&skip=${skip}`
     );
-    console.log(response.data.products);
     return response.data.products;
   } catch (error) {
     console.log(error);

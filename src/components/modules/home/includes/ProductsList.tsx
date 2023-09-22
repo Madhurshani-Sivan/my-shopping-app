@@ -44,7 +44,7 @@ const ProductList: FC = () => {
         >
           Previous Page
         </Button>
-        <span className={styles.page}>{currentPage}</span>
+        <p className={styles.page}>{currentPage}</p>
         <Button onClick={() => setCurrentPage(currentPage + 1)}>
           Next Page
         </Button>

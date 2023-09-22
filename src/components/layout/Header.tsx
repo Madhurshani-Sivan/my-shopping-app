@@ -6,10 +6,24 @@ import {
 import styles from "./Header.module.css";
 import logo from "./assets/logo.png";
 import { Button, Input, Select } from "antd";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Option } from "antd/es/mentions";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../store/slices/categoriesReducer";
+import { CategoryState } from "../../types/categories";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { RootState } from "../../store/RootState";
 
 const Header: FC = () => {
+  const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
+  const { categories } = useSelector(
+    (state: RootState) => state.categories as CategoryState
+  );
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
   return (
     <header>
       <div className={styles.notice}>
@@ -22,8 +36,12 @@ const Header: FC = () => {
           <p>Comforty</p>
         </div>
         <Select<string> defaultValue="all">
-          <Option value="all"> All Categories</Option>,
-          <Option value="1"> 1</Option>,<Option value="2"> 2</Option>,
+          <Option value="all"> All Categories</Option>
+          {categories.map((category) => (
+            <Option key={category} value={category}>
+              {category}
+            </Option>
+          ))}
         </Select>
         <Input placeholder="Search here" />
         <Button className={styles.searchButton}>Search</Button>
