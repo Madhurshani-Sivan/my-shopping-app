@@ -1,11 +1,12 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../../store/slices/productReducer";
-import { Col, Row, Spin } from "antd";
+import { Button, Col, Row, Spin } from "antd";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../../../store/RootState";
 import ProductCard from "./ProductCard";
 import { Product, ProductState } from "../../../../types/products";
+import styles from "./ProductsList.module.css";
 
 const ProductList: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
@@ -13,9 +14,11 @@ const ProductList: FC = () => {
     (state: RootState) => state.products as ProductState
   );
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
-    dispatch(fetchProducts(1, 16));
-  }, [dispatch]);
+    dispatch(fetchProducts(currentPage, 16));
+  }, [dispatch, currentPage]);
 
   if (isLoading) {
     return <Spin />;
@@ -26,13 +29,27 @@ const ProductList: FC = () => {
   }
 
   return (
-    <Row gutter={[16, 16]}>
-      {data.map((product) => (
-        <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
-          <ProductCard product={product as Product} />
-        </Col>
-      ))}
-    </Row>
+    <div>
+      <Row gutter={[16, 16]}>
+        {data.map((product) => (
+          <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
+            <ProductCard product={product as Product} />
+          </Col>
+        ))}
+      </Row>
+      <div className={styles.pagination}>
+        <Button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          Previous Page
+        </Button>
+        <span className={styles.page}>{currentPage}</span>
+        <Button onClick={() => setCurrentPage(currentPage + 1)}>
+          Next Page
+        </Button>
+      </div>
+    </div>
   );
 };
 
