@@ -8,7 +8,6 @@ const api = axios.create({
 export const listCategories = async () => {
   try {
     const response = await api.get(CATEGORIES_ENDPOINT);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);

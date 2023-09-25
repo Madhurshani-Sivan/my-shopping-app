@@ -1,5 +1,5 @@
 import { Action, ThunkAction, createSlice } from "@reduxjs/toolkit";
-import { listProducts } from "../actions/productsApi";
+import { listProducts, listProductsByCategory } from "../actions/productsApi";
 import { RootState } from "../RootState";
 import { ProductState } from "../../types/products";
 
@@ -38,6 +38,22 @@ export const fetchProducts =
     try {
       dispatch(fetchProductsStart());
       const products = await listProducts(page, limit);
+      dispatch(fetchProductsSuccess(products));
+    } catch (error) {
+      dispatch(fetchProductsFailure("Failed to fetch products....."));
+    }
+  };
+
+export const fetchProductsByCategory =
+  (
+    category: string,
+    page: number,
+    limit: number
+  ): ThunkAction<void, RootState, unknown, Action<string>> =>
+  async (dispatch) => {
+    try {
+      dispatch(fetchProductsStart());
+      const products = await listProductsByCategory(category, page, limit);
       dispatch(fetchProductsSuccess(products));
     } catch (error) {
       dispatch(fetchProductsFailure("Failed to fetch products....."));

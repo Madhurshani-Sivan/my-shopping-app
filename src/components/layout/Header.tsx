@@ -13,6 +13,10 @@ import { fetchCategories } from "../../store/slices/categoriesReducer";
 import { CategoryState } from "../../types/categories";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../store/RootState";
+import {
+  fetchProducts,
+  fetchProductsByCategory,
+} from "../../store/slices/productReducer";
 
 const Header: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
@@ -23,6 +27,14 @@ const Header: FC = () => {
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
+
+  const handleCategorySelection = (value: string) => {
+    if (value == "all") {
+      dispatch(fetchProducts(1, 16));
+    } else {
+      dispatch(fetchProductsByCategory(value, 1, 16));
+    }
+  };
 
   return (
     <header>
@@ -35,7 +47,7 @@ const Header: FC = () => {
           <img src={logo} alt="logo" />
           <p>Comforty</p>
         </div>
-        <Select<string> defaultValue="all">
+        <Select<string> defaultValue="all" onChange={handleCategorySelection}>
           <Option value="all"> All Categories</Option>
           {categories.map((category) => (
             <Option key={category} value={category}>
