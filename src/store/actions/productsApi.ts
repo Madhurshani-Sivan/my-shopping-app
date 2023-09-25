@@ -3,6 +3,7 @@ import {
   BASE_URL,
   PRODUCTS_BY_CATEGORY_ENDPOINT,
   PRODUCTS_ENDPOINT,
+  PRODUCT_BY_KEYWORD_ENDPOINT,
 } from "../../configs/http";
 
 const api = axios.create({
@@ -31,7 +32,17 @@ export const listProductsByCategory = async (
     const response = await api.get(
       `${PRODUCTS_BY_CATEGORY_ENDPOINT}/${category}?limit=${limit}&skip=${skip}`
     );
-    console.log(response.data);
+    return response.data.products;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const searchProductByKeyword = async (keyword: string) => {
+  try {
+    const response = await api.get(
+      `${PRODUCT_BY_KEYWORD_ENDPOINT}?q=${keyword}`
+    );
     return response.data.products;
   } catch (error) {
     console.log(error);

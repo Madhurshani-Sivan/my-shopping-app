@@ -1,5 +1,9 @@
 import { Action, ThunkAction, createSlice } from "@reduxjs/toolkit";
-import { listProducts, listProductsByCategory } from "../actions/productsApi";
+import {
+  listProducts,
+  listProductsByCategory,
+  searchProductByKeyword,
+} from "../actions/productsApi";
 import { RootState } from "../RootState";
 import { ProductState } from "../../types/products";
 
@@ -54,6 +58,18 @@ export const fetchProductsByCategory =
     try {
       dispatch(fetchProductsStart());
       const products = await listProductsByCategory(category, page, limit);
+      dispatch(fetchProductsSuccess(products));
+    } catch (error) {
+      dispatch(fetchProductsFailure("Failed to fetch products....."));
+    }
+  };
+
+export const fetchProductByKeyword =
+  (keyword: string): ThunkAction<void, RootState, unknown, Action<string>> =>
+  async (dispatch) => {
+    try {
+      dispatch(fetchProductsStart());
+      const products = await searchProductByKeyword(keyword);
       dispatch(fetchProductsSuccess(products));
     } catch (error) {
       dispatch(fetchProductsFailure("Failed to fetch products....."));

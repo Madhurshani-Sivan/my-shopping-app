@@ -6,7 +6,7 @@ import {
 import styles from "./Header.module.css";
 import logo from "./assets/logo.png";
 import { Button, Input, Select } from "antd";
-import { FC, useEffect } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { Option } from "antd/es/mentions";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/slices/categoriesReducer";
@@ -14,6 +14,7 @@ import { CategoryState } from "../../types/categories";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../store/RootState";
 import {
+  fetchProductByKeyword,
   fetchProducts,
   fetchProductsByCategory,
 } from "../../store/slices/productReducer";
@@ -23,6 +24,8 @@ const Header: FC = () => {
   const { categories } = useSelector(
     (state: RootState) => state.categories as CategoryState
   );
+
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -34,6 +37,14 @@ const Header: FC = () => {
     } else {
       dispatch(fetchProductsByCategory(value, 1, 16));
     }
+  };
+
+  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchKeyword(event.target.value);
+  };
+
+  const handleProductSearch = () => {
+    dispatch(fetchProductByKeyword(searchKeyword));
   };
 
   return (
@@ -55,8 +66,14 @@ const Header: FC = () => {
             </Option>
           ))}
         </Select>
-        <Input placeholder="Search here" />
-        <Button className={styles.searchButton}>Search</Button>
+        <Input
+          placeholder="Search here"
+          value={searchKeyword}
+          onChange={handleSearchInputChange}
+        />
+        <Button className={styles.searchButton} onClick={handleProductSearch}>
+          Search
+        </Button>
         <Button className={styles.cartButton}>
           <ShoppingCartOutlined />
           Cart &nbsp;
