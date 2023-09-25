@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { BASE_URL, CATEGORIES_ENDPOINT } from "../../configs/http";
 
 const api = axios.create({

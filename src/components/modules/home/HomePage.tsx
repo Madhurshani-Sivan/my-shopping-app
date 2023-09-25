@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import ProductList from "./includes/ProductsList";
 
 const HomePage: FC = () => {

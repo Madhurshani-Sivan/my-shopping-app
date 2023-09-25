@@ -1,13 +1,14 @@
+import { FC } from "react";
+import { Button, Input } from "antd";
 import {
   FacebookOutlined,
   InstagramOutlined,
   TwitterOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
+
 import styles from "./Footer.module.css";
 import logo from "./assets/logo.png";
-import { Button, Input } from "antd";
-import { FC } from "react";
 
 const Footer: FC = () => {
   return (

@@ -1,10 +1,11 @@
 import { Action, ThunkAction, createSlice } from "@reduxjs/toolkit";
+
+import { RootState } from "../RootState";
 import {
   listProducts,
   listProductsByCategory,
   searchProductByKeyword,
 } from "../actions/productsApi";
-import { RootState } from "../RootState";
 import { ProductState } from "../../types/products";
 
 const initialState: ProductState = { data: [], isLoading: false, error: null };

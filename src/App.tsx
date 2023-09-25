@@ -1,7 +1,8 @@
-import Header from "./components/layout/Header";
-import HomePage from "./components/modules/home/HomePage";
-import Footer from "./components/layout/Footer";
 import { Provider } from "react-redux";
+
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import HomePage from "./components/modules/home/HomePage";
 import store from "./store/store";
 
 function App(): JSX.Element {

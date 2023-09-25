@@ -1,4 +1,5 @@
 import { Action, ThunkAction, createSlice } from "@reduxjs/toolkit";
+
 import { RootState } from "../RootState";
 import { listCategories } from "../actions/categoriesApi";
 

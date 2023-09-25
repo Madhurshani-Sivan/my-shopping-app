@@ -1,11 +1,13 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../../../store/slices/productReducer";
-import { Button, Col, Row, Spin } from "antd";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { RootState } from "../../../../store/RootState";
+import { Button, Col, Row, Spin } from "antd";
+
 import ProductCard from "./ProductCard";
+import { RootState } from "../../../../store/RootState";
+import { fetchProducts } from "../../../../store/slices/productReducer";
 import { Product, ProductState } from "../../../../types/products";
+
 import styles from "./ProductsList.module.css";
 
 const ProductList: FC = () => {

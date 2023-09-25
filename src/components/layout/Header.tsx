@@ -1,23 +1,26 @@
+import { ChangeEvent, FC, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+
+import { Button, Input, Select } from "antd";
 import {
   CheckOutlined,
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import styles from "./Header.module.css";
-import logo from "./assets/logo.png";
-import { Button, Input, Select } from "antd";
-import { ChangeEvent, FC, useEffect, useState } from "react";
 import { Option } from "antd/es/mentions";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "../../store/slices/categoriesReducer";
-import { CategoryState } from "../../types/categories";
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+
 import { RootState } from "../../store/RootState";
+import { fetchCategories } from "../../store/slices/categoriesReducer";
 import {
   fetchProductByKeyword,
   fetchProducts,
   fetchProductsByCategory,
 } from "../../store/slices/productReducer";
+import { CategoryState } from "../../types/categories";
+
+import styles from "./Header.module.css";
+import logo from "./assets/logo.png";
 
 const Header: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
