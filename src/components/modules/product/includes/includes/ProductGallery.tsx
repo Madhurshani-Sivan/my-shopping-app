@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { ProductGalleryProps } from "../../../../../types/props";
+import styles from "./ProductGallery.module.css";
 
-export const ProductGallery: FC<ProductGalleryProps> = ({ images }) => {
+const ProductGallery: FC<ProductGalleryProps> = ({ images }) => {
   return (
-    <div>
+    <div className={styles.gallery}>
       {images.map((url) => (
         <img src={url} />
       ))}
     </div>
   );
 };
+
+export default ProductGallery;

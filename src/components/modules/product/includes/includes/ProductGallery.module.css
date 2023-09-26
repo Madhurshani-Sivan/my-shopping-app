@@ -1,0 +1,12 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.gallery img {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

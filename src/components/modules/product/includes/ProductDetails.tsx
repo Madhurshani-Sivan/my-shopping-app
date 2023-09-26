@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styles from "./ProductDetails.module.css";
-import { ProductGallery } from "./includes/ProductGallery";
+import ProductGallery from "./includes/ProductGallery";
 import { ProductCardProps } from "../../../../types/props";
-import { ProductThumbnail } from "./includes/ProductThumbnail";
+import ProductThumbnail from "./includes/ProductThumbnail";
 import ProductDescription from "./includes/ProductDescription";
 
 const ProductDetails: FC<ProductCardProps> = ({ product }) => {

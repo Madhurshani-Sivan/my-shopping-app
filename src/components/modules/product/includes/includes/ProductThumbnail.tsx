@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { ProductThumbnailProps } from "../../../../../types/props";
 
-export const ProductThumbnail: FC<ProductThumbnailProps> = ({
-  thumbnail,
-  title,
-}) => {
+const ProductThumbnail: FC<ProductThumbnailProps> = ({ thumbnail, title }) => {
   return (
     <div>
       <img src={thumbnail} alt={title} />
@@ -12,3 +9,5 @@ export const ProductThumbnail: FC<ProductThumbnailProps> = ({
     </div>
   );
 };
+
+export default ProductThumbnail;
