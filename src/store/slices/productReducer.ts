@@ -2,6 +2,7 @@ import { Action, ThunkAction, createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "../RootState";
 import {
+  getProductById,
   listProducts,
   listProductsByCategory,
   searchProductByKeyword,
@@ -71,6 +72,18 @@ export const fetchProductByKeyword =
     try {
       dispatch(fetchProductsStart());
       const products = await searchProductByKeyword(keyword);
+      dispatch(fetchProductsSuccess(products));
+    } catch (error) {
+      dispatch(fetchProductsFailure("Failed to fetch products....."));
+    }
+  };
+
+export const fetchProductById =
+  (id: string): ThunkAction<void, RootState, unknown, Action<string>> =>
+  async (dispatch) => {
+    try {
+      dispatch(fetchProductsStart());
+      const products = await getProductById(id);
       dispatch(fetchProductsSuccess(products));
     } catch (error) {
       dispatch(fetchProductsFailure("Failed to fetch products....."));

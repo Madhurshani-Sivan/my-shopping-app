@@ -3,9 +3,8 @@ import { Card } from "antd";
 import { ShoppingTwoTone } from "@ant-design/icons";
 import Meta from "antd/es/card/Meta";
 
-import { ProductCardProps } from "../../../../types/products";
-
 import styles from "./ProductCard.module.css";
+import { ProductCardProps } from "../../../../../types/props";
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const inStock = product.stock > 0;

@@ -49,3 +49,12 @@ export const searchProductByKeyword = async (keyword: string) => {
     console.log(error);
   }
 };
+
+export const getProductById = async (id: string) => {
+  try {
+    const response = await api.get(`${PRODUCTS_ENDPOINT}/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

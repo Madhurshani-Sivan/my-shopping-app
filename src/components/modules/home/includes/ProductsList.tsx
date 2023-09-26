@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Button, Col, Row, Spin } from "antd";
 
-import ProductCard from "./ProductCard";
 import { RootState } from "../../../../store/RootState";
 import { fetchProducts } from "../../../../store/slices/productReducer";
 import { Product, ProductState } from "../../../../types/products";
 
 import styles from "./ProductsList.module.css";
 import { Link } from "react-router-dom";
+import ProductCard from "./includes/ProductCard";
 
 const ProductList: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
   const { data, isLoading, error } = useSelector(
     (state: RootState) => state.products as ProductState
   );
+
+  const products = Array.isArray(data) ? data : [data];
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -34,7 +36,7 @@ const ProductList: FC = () => {
   return (
     <div>
       <Row gutter={[16, 16]}>
-        {data.map((product) => (
+        {products.map((product) => (
           <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
             <Link to={`/product/${product.id}`}>
               <ProductCard product={product as Product} />

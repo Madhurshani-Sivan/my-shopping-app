@@ -4,7 +4,7 @@ export interface Product {
   description: string;
   discountPercentage: number;
   id: number;
-  images: String[];
+  images: string[];
   price: number;
   rating: number;
   stock: number;
@@ -13,11 +13,7 @@ export interface Product {
 }
 
 export interface ProductState {
-  data: Product[];
+  data: Product[] | Product;
   isLoading: Boolean;
   error: string | null;
-}
-
-export interface ProductCardProps {
-  product: Product;
 }
