@@ -5,6 +5,7 @@ import Footer from "./components/layout/Footer";
 import HomePage from "./components/modules/home/HomePage";
 import store from "./store/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductPage from "./components/modules/product/ProductPage";
 
 function App(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ function App(): JSX.Element {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

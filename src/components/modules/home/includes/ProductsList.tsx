@@ -9,6 +9,7 @@ import { fetchProducts } from "../../../../store/slices/productReducer";
 import { Product, ProductState } from "../../../../types/products";
 
 import styles from "./ProductsList.module.css";
+import { Link } from "react-router-dom";
 
 const ProductList: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
@@ -35,7 +36,9 @@ const ProductList: FC = () => {
       <Row gutter={[16, 16]}>
         {data.map((product) => (
           <Col key={product.id} xs={24} sm={12} md={8} lg={6} xl={6}>
-            <ProductCard product={product as Product} />
+            <Link to={`/product/${product.id}`}>
+              <ProductCard product={product as Product} />
+            </Link>
           </Col>
         ))}
       </Row>
