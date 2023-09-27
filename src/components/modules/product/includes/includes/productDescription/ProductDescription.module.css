@@ -14,3 +14,10 @@
   color: #aaa;
   text-decoration: line-through;
 }
+
+.counter Button {
+  border-radius: 0;
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+}
