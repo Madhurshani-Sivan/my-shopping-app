@@ -1,21 +1,26 @@
 import { Button } from "antd";
 import { FC } from "react";
-import { ProductCardProps } from "../../../../../types/props";
+import { ProductCardProps } from "../../../../../../types/props";
+import StarRating from "./includes/StarRating";
 
 const ProductDescription: FC<ProductCardProps> = ({ product }) => {
   return (
     <div>
       <div>
-        <p>Brand: {product.brand}</p>
         <p>
+          <b>Brand: </b>
+          {product.brand}
+        </p>
+        <p>
+          <b>Availability: </b>
           {product.stock > 0
             ? `Only ${product.stock} in Stock`
             : "Not Available"}
         </p>
       </div>
       <div>
-        <h3>{product.title}</h3>
-        <p>Rating: {product.rating}</p>
+        <h1>{product.title}</h1>
+        <StarRating rating={product.rating} />
       </div>
       <div>
         <p>

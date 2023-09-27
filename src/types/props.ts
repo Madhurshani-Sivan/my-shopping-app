@@ -6,9 +6,10 @@ export interface ProductCardProps {
 
 export interface ProductGalleryProps {
   images: string[];
-}
-
-export interface ProductThumbnailProps {
   thumbnail: string;
   title: string;
+}
+
+export interface StarRatingProps {
+  rating: number;
 }
