@@ -15,9 +15,38 @@
   text-decoration: line-through;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .counter Button {
   border-radius: 0;
   height: 50px;
   width: 50px;
   font-size: 20px;
+}
+
+.buyNow {
+  height: 50px;
+  border: none;
+  background-color: orangered;
+  color: white;
+  border-radius: 0;
+  width: 150px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.addToCart {
+  height: 50px;
+  border: 1px solid orangered;
+  background-color: white;
+  color: orangered;
+  border-radius: 0;
+  width: 150px;
+  font-weight: bold;
+  font-size: 16px;
 }

@@ -44,14 +44,16 @@ const ProductDescription: FC<ProductCardProps> = ({ product }) => {
             <h4>${product.price}</h4>
           </div>
         </div>
-        <div className={styles.counter}>
-          <Button onClick={() => setCount(count + 1)}>+</Button>
-          <Button>{count}</Button>
-          <Button onClick={() => setCount(count - 1)}>-</Button>
-        </div>
-        <div>
-          <Button>Buy Now</Button>
-          <Button>Add to Cart</Button>
+        <div className={styles.buttons}>
+          <div className={styles.counter}>
+            <Button onClick={() => setCount(count + 1)}>+</Button>
+            <Button>{count}</Button>
+            <Button onClick={() => setCount(count - 1)}>-</Button>
+          </div>
+          <div>
+            <Button className={styles.buyNow}>Buy Now</Button>
+            <Button className={styles.addToCart}>Add to Cart</Button>
+          </div>
         </div>
       </div>
     </div>
