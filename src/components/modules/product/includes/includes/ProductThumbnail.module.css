@@ -1,0 +1,16 @@
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail img {
+  height: 500px;
+  width: 500px;
+  border: none;
+  padding: 50px;
+  background-color: #eee;
+}
+
+.thumbnail p {
+  color: #aaa;
+}
