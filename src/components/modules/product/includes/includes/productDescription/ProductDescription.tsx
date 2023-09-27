@@ -2,10 +2,11 @@ import { Button } from "antd";
 import { FC } from "react";
 import { ProductCardProps } from "../../../../../../types/props";
 import StarRating from "./includes/StarRating";
+import styles from "./ProductDescription.module.css";
 
 const ProductDescription: FC<ProductCardProps> = ({ product }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <div>
         <p>
           <b>Brand: </b>
@@ -17,12 +18,8 @@ const ProductDescription: FC<ProductCardProps> = ({ product }) => {
             ? `Only ${product.stock} in Stock`
             : "Not Available"}
         </p>
-      </div>
-      <div>
         <h1>{product.title}</h1>
         <StarRating rating={product.rating} />
-      </div>
-      <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -34,20 +31,26 @@ const ProductDescription: FC<ProductCardProps> = ({ product }) => {
         </p>
       </div>
       <div>
-        <p>USD(incl. of all taxes):</p>
-        <h5>
-          {product.price - (product.discountPercentage / 100) * product.price}
-        </h5>
-        <h6>{product.price}</h6>
-      </div>
-      <div>
-        <Button>+</Button>
-        <Button>1</Button>
-        <Button>-</Button>
-      </div>
-      <div>
-        <Button>Buy Now</Button>
-        <Button>Add to Cart</Button>
+        <div>
+          <p>USD(incl. of all taxes):</p>
+          <div className={styles.price}>
+            <h3>
+              $
+              {product.price -
+                (product.discountPercentage / 100) * product.price}
+            </h3>
+            <h4>${product.price}</h4>
+          </div>
+        </div>
+        <div>
+          <Button>+</Button>
+          <Button>1</Button>
+          <Button>-</Button>
+        </div>
+        <div>
+          <Button>Buy Now</Button>
+          <Button>Add to Cart</Button>
+        </div>
       </div>
     </div>
   );
