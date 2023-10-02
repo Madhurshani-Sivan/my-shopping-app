@@ -21,6 +21,7 @@ import { CategoryState } from "../../types/categories";
 
 import styles from "./Header.module.css";
 import logo from "./assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Header: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
@@ -77,11 +78,13 @@ const Header: FC = () => {
         <Button className={styles.searchButton} onClick={handleProductSearch}>
           Search
         </Button>
-        <Button className={styles.cartButton}>
-          <ShoppingCartOutlined />
-          Cart &nbsp;
-          <span className={styles.cartCount}>2</span>
-        </Button>
+        <Link to="/cart">
+          <Button className={styles.cartButton}>
+            <ShoppingCartOutlined />
+            Cart &nbsp;
+            <span className={styles.cartCount}>2</span>
+          </Button>
+        </Link>
         <Button>
           <UserOutlined />
         </Button>
