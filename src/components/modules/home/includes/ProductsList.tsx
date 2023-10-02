@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Button, Col, Row, Spin } from "antd";
 
+import ProductCard from "./includes/ProductCard";
 import { RootState } from "../../../../store/RootState";
 import { fetchProducts } from "../../../../store/slices/productReducer";
 import { Product, ProductState } from "../../../../types/products";
 
 import styles from "./ProductsList.module.css";
-import { Link } from "react-router-dom";
-import ProductCard from "./includes/ProductCard";
 
 const ProductList: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();

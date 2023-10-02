@@ -1,13 +1,14 @@
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../store/RootState";
-import { ProductState } from "../../../types/products";
-import { fetchProductById } from "../../../store/slices/productReducer";
 import { useParams } from "react-router-dom";
-import { ProductPageParams } from "../../../types/routes";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Spin } from "antd";
+
 import ProductDetails from "./includes/ProductDetails";
+import { RootState } from "../../../store/RootState";
+import { fetchProductById } from "../../../store/slices/productReducer";
+import { ProductState } from "../../../types/products";
+import { ProductPageParams } from "../../../types/routes";
 
 const ProductPage: FC = () => {
   const dispatch = useDispatch<ThunkDispatch<RootState, any, AnyAction>>();
