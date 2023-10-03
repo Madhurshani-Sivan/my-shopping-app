@@ -3,8 +3,23 @@ import { FC, useState } from "react";
 import { ProductCardProps } from "../../../../../../types/props";
 import StarRating from "./includes/StarRating";
 import styles from "./ProductDescription.module.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../../../../store/slices/cartReducer";
 
 const ProductDescription: FC<ProductCardProps> = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.title,
+        price: product.price,
+        quantity: 1,
+      })
+    );
+  };
+
   const [count, setCount] = useState(1);
 
   return (
@@ -52,7 +67,9 @@ const ProductDescription: FC<ProductCardProps> = ({ product }) => {
           </div>
           <div>
             <Button className={styles.buyNow}>Buy Now</Button>
-            <Button className={styles.addToCart}>Add to Cart</Button>
+            <Button className={styles.addToCart} onClick={handleAddToCart}>
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>
